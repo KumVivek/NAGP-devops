@@ -59,12 +59,12 @@ pipeline {
                     echo 'Hello from main branch'
                     sh 'gcloud auth activate-service-account --project=nagp-cloudops --key-file=/home/ubuntu/nagp-cloudops-9cebc58d0cde.json'
                     sh 'gcloud container clusters get-credentials nagp-ops --zone us-central1-c --project nagp-cloudops'
-                    sh 'kubectl apply -f MasterDeployment.yml --namespace=master'
+                    sh 'kubectl apply -f MasterDeployment.yml --namespace=kubernetes-cluster-vivekkumar04'
 
                 }  else if (env.BRANCH_NAME == 'develop') {
                     sh 'gcloud auth activate-service-account --project=nagp-cloudops --key-file=/home/ubuntu/nagp-cloudops-9cebc58d0cde.json'
                     sh 'gcloud container clusters get-credentials nagp-ops --zone us-central1-c --project nagp-cloudops'
-                    sh 'kubectl apply -f DevelopDeployment.yml --namespace=develop'
+                    sh 'kubectl apply -f DevelopDeployment.yml --namespace=kubernetes-cluster-vivekkumar04'
                 }
             }
         }
